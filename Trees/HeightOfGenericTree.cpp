@@ -28,7 +28,6 @@ int getHeight(TreeNode<int>* root) {
     return answer;
 }
 
-
 #include <iostream>
 #include <queue>
 #include <vector>
