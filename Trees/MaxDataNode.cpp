@@ -12,6 +12,38 @@ Sample Input 1:
 Sample Output 1:
 50
 */
+
+
+#include <queue>
+TreeNode<int>* maxDataNode(TreeNode<int>* root) {
+    // Write your code here
+    if(root == NULL)
+    {
+        return root;
+    }
+    TreeNode<int> * answer = root;
+    queue<TreeNode<int>*> pendingnodes;
+    pendingnodes.push(answer);
+    while(!pendingnodes.empty())
+    {
+        TreeNode <int> * frontelement = pendingnodes.front();
+        pendingnodes.pop();
+        for(int i = 0;i<frontelement -> children.size();i++)
+        {
+            if(answer -> data <= frontelement -> children[i] -> data)
+        	{
+            	answer = frontelement -> children[i];
+            	pendingnodes.push(frontelement -> children[i]);
+        	}
+            else
+                pendingnodes.push(frontelement -> children[i]);
+        }
+        
+    }
+    return answer;
+}
+
+
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -56,35 +88,6 @@ TreeNode<int>* takeInputLevelWise() {
     }
 
     return root;
-}
-
-#include <queue>
-TreeNode<int>* maxDataNode(TreeNode<int>* root) {
-    // Write your code here
-    if(root == NULL)
-    {
-        return root;
-    }
-    TreeNode<int> * answer = root;
-    queue<TreeNode<int>*> pendingnodes;
-    pendingnodes.push(answer);
-    while(!pendingnodes.empty())
-    {
-        TreeNode <int> * frontelement = pendingnodes.front();
-        pendingnodes.pop();
-        for(int i = 0;i<frontelement -> children.size();i++)
-        {
-            if(answer -> data <= frontelement -> children[i] -> data)
-        	{
-            	answer = frontelement -> children[i];
-            	pendingnodes.push(frontelement -> children[i]);
-        	}
-            else
-                pendingnodes.push(frontelement -> children[i]);
-        }
-        
-    }
-    return answer;
 }
 
 int main() {
