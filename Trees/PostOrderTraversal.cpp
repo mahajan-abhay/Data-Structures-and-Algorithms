@@ -12,6 +12,17 @@ Sample Input 1:
 Sample Output 1:
 400 50 20 30 40 10
 */
+
+void printPostOrder(TreeNode<int>* root) {
+    // Write your code here
+    for(int i = 0;i<root -> children.size() ; i++)
+    {
+        printPostOrder(root -> children[i]);
+    }
+    cout<< root -> data << " ";
+}
+
+
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -31,15 +42,6 @@ class TreeNode {
         }
     }
 };
-
-void printPostOrder(TreeNode<int>* root) {
-    // Write your code here
-    for(int i = 0;i<root -> children.size() ; i++)
-    {
-        printPostOrder(root -> children[i]);
-    }
-    cout<< root -> data << " ";
-}
 
 TreeNode<int>* takeInputLevelWise() {
     int rootData;
